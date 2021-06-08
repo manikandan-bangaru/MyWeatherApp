@@ -1,17 +1,24 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="18154" systemVersion="20D91" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="WeatherInfo" representedClassName="WeatherInfo" syncable="YES">
-        <attribute name="desc" optional="YES" attributeType="String"/>
+        <attribute name="icon_name" optional="YES" attributeType="String"/>
         <attribute name="id" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="latitude" optional="YES" attributeType="String"/>
         <attribute name="longitude" optional="YES" attributeType="String"/>
         <attribute name="max_temp" optional="YES" attributeType="String"/>
         <attribute name="min_temp" optional="YES" attributeType="String"/>
-        <attribute name="place" optional="YES" attributeType="String"/>
+        <attribute name="place_country" optional="YES" attributeType="String"/>
+        <attribute name="place_name" optional="YES" attributeType="String"/>
         <attribute name="temp" optional="YES" attributeType="String"/>
         <attribute name="time" optional="YES" attributeType="String"/>
+        <attribute name="weather_desc" optional="YES" attributeType="String"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="id"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
     </entity>
     <elements>
-        <element name="WeatherInfo" positionX="-63" positionY="-18" width="128" height="164"/>
+        <element name="WeatherInfo" positionX="-63" positionY="-18" width="128" height="194"/>
     </elements>
 </model>

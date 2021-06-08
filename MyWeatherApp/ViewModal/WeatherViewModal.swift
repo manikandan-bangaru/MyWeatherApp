@@ -10,18 +10,24 @@ import UIKit
 class WeatherViewModal {
 
     private var weatherResponse : WeatherResponse?
-    init(response : WeatherResponse) {
+    private var time : String?
+    init(response : WeatherResponse , time : String? = nil) {
         self.weatherResponse = response
+        self.time = time
     }
     
     
+    func getCityID() -> Int64?{
+        return self.weatherResponse?.id
+    }
     func getPlace() -> String{
         return (weatherResponse?.name ?? "") + " , " + (weatherResponse?.sys?.country ?? "")
     }
     func getTime() -> String {
+        
         let dateformate = DateFormatter()
         dateformate.dateFormat = "HH:MM a , E MMM dd"
-        return dateformate.string(from: Date())
+        return self.time ?? dateformate.string(from: Date())
     }
     func getIcon() -> UIImage?{
 //        01d.png      01n.png      clear sky
@@ -36,24 +42,24 @@ class WeatherViewModal {
         var systemIconName = "cloud"
         
         switch weatherResponse?.weather?.first?.icon {
-        case "01d.png" , "01n.png" : // clear SKY
+        case "01d" , "01n" : // clear SKY
             systemIconName = "cloud"
-        case "02d.png" , "02n.png" : // few clouds
-            systemIconName = "cloud"
-        case "03d.png" , "03n.png" : // scattered clouds
-            systemIconName = "cloud"
-        case "04d.png" , "04n.png" : //broken clouds
-            systemIconName = "cloud"
-        case "09d.png" , "09n.png" : // shower rain
-            systemIconName = "cloud"
-        case "10d.png" , "10n.png" : // rain
-            systemIconName = "cloud"
-        case "11d.png" , "11n.png" : // thunderstorm
-            systemIconName = "cloud"
-        case "13d.png" , "13n.png" : // snow
-            systemIconName = "cloud"
-        case "50d.png" , "50n.png" : // mist
-            systemIconName = "cloud"
+        case "02d" , "02n" : // few clouds
+            systemIconName = "cloud.sun"
+        case "03d" , "03n" : // scattered clouds
+            systemIconName = "cloud.fill"
+        case "04d" , "04n" : //broken clouds
+            systemIconName = "icloud"
+        case "09d" , "09n" : // shower rain
+            systemIconName = "cloud.drizzle"
+        case "10d" , "10n" : // rain
+            systemIconName = "cloud.rain"
+        case "11d" , "11n" : // thunderstorm
+            systemIconName = "cloud.bolt.rain"
+        case "13d" , "13n" : // snow
+            systemIconName = "cloud.snow"
+        case "50d" , "50n" : // mist
+            systemIconName = "cloud.fog"
         default:
             systemIconName = "cloud"
         }
@@ -83,4 +89,41 @@ class WeatherViewModal {
     func getWeatherDescription() -> String{
         return weatherResponse?.weather?.first?.description?.capitalized ?? ""
     }
+    func getCoord() -> LocationCoord?{
+        
+        let lat = self.weatherResponse?.coord?.lat
+        let lon = self.weatherResponse?.coord?.lon
+        if let lat = lat ,let lon = lon{
+            return LocationCoord(lat: Double(lat), lon: Double(lon))
+        }
+        return nil
+    }
+    func getWindSpeed() -> String?{
+        if let info = weatherResponse?.wind?.speed{
+            return String(info)
+        }
+        return nil
+    }
+    func getPressure() -> String?{
+        if let info = weatherResponse?.main?.pressure{
+            return String(info)
+        }
+        return nil
+    }
+    func getHumidity() -> String?{
+        if let info = weatherResponse?.main?.humidity{
+            return String(info)
+        }
+        return nil
+    }
+    func getVisibility() -> String?{
+        if let info = weatherResponse?.visibility{
+            return String(info)
+        }
+        return nil
+    }
+    func getResponse() -> WeatherResponse? {
+        return self.weatherResponse
+    }
+    
 }

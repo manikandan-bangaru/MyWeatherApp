@@ -19,6 +19,7 @@ struct CoreDataStack {
         
         let persistantContainer = NSPersistentContainer(name: modelName)
         persistantContainer.loadPersistentStores(completionHandler: { (storeDescription, error) in
+            persistantContainer.viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
             if let error = error as NSError? {
                 fatalError("Unresolved error \(error), \(error.userInfo)")
             }
@@ -30,6 +31,9 @@ struct CoreDataStack {
 
 extension CoreDataStack {
     
+    func dropAllData()  {
+        
+    }
     func saveContext () {
            if context.hasChanges {
                do {

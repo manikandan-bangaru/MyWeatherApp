@@ -13,6 +13,7 @@ class WeatherAPIClient {
     
     public func searchCity(apiURLComponents: WeatherRequestParams, completionHandlerForGET: @escaping HTTPGetRespHandler){
         if let url = apiURLComponents.getRequestURL(){
+            APIClient.shared.cancelPreViousCalls()
             APIClient.shared.taskForGETMethod(url: url) { data, error in
                 guard  error == nil else {
                     completionHandlerForGET(nil,error)

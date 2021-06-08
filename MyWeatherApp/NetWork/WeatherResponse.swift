@@ -24,8 +24,8 @@ class WeatherResponse: Decodable {
 }
 
 public class Coord: Decodable {
-    var lon : Float
-    var lat : Float
+    var lon : Float?
+    var lat : Float?
 }
 
 class Weather: Decodable {

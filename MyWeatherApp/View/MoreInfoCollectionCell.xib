@@ -10,35 +10,48 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="MoreInfoCollectionCell" customModule="MyWeatherApp" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="177" height="67"/>
+            <rect key="frame" x="0.0" y="0.0" width="188" height="57"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="177" height="67"/>
+                <rect key="frame" x="0.0" y="0.0" width="188" height="57"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="wind" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="gTh-Uv-iEj">
-                        <rect key="frame" x="8" y="8" width="50" height="50"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="123.43" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0aL-dE-Zdg">
-                        <rect key="frame" x="68" y="8" width="101" height="50"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
+                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="gmk-XH-bwQ">
+                        <rect key="frame" x="8" y="8" width="172" height="40"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="speedometer" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="gTh-Uv-iEj">
+                                <rect key="frame" x="0.0" y="0.5" width="41" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="JQY-yY-Uzp"/>
+                                    <constraint firstAttribute="width" secondItem="gTh-Uv-iEj" secondAttribute="height" multiplier="1:1" id="chl-uC-QgV"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="123.43" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0aL-dE-Zdg">
+                                <rect key="frame" x="49" y="0.0" width="123" height="41"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </stackView>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
-            <size key="customSize" width="177" height="67"/>
+            <constraints>
+                <constraint firstItem="gmk-XH-bwQ" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="D7y-jm-zgc"/>
+                <constraint firstAttribute="trailing" secondItem="gmk-XH-bwQ" secondAttribute="trailing" constant="8" id="L4s-ZV-6CL"/>
+                <constraint firstAttribute="bottom" secondItem="gmk-XH-bwQ" secondAttribute="bottom" constant="8" id="YGt-An-Qmz"/>
+                <constraint firstItem="gmk-XH-bwQ" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="8" id="keY-pq-lw4"/>
+            </constraints>
+            <size key="customSize" width="188" height="57"/>
             <connections>
                 <outlet property="imageView" destination="gTh-Uv-iEj" id="zOu-tf-aNO"/>
                 <outlet property="label" destination="0aL-dE-Zdg" id="gh8-XZ-1Ks"/>
             </connections>
-            <point key="canvasLocation" x="61.594202898550726" y="133.59375"/>
+            <point key="canvasLocation" x="75" y="134"/>
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="wind" catalog="system" width="128" height="101"/>
+        <image name="speedometer" catalog="system" width="128" height="121"/>
     </resources>
 </document>

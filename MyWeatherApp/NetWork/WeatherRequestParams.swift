@@ -63,9 +63,9 @@ public class WeatherRequestParams: APIRequestParams {
                 cityInfo = cn
             }
         }
-            
-        params[WeatherRequestParamConstants.Params.CityInfo] = cityInfo as AnyObject
-        
+        if cityInfo.isEmpty == false {
+            params[WeatherRequestParamConstants.Params.CityInfo] = cityInfo as AnyObject
+        }
         if let lat = self.latitude {
             params[WeatherRequestParamConstants.Params.Latitude] = lat as AnyObject
 
@@ -101,10 +101,11 @@ public class WeatherRequestParams: APIRequestParams {
             super.init(apiPath: WeatherRequestParamConstants.SearchCityPath)
         }
         
-        func set(cityName : String){
+        public  func set(cityName : String)->SearchCityParamBuilder{
             self.cityName = cityName
+            return self
         }
-        func build() -> WeatherRequestParams{
+        public  func build() -> WeatherRequestParams{
             return WeatherRequestParams(apiPath: self.apiPath, builder: self)
         }
     }
