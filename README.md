@@ -1,5 +1,5 @@
 # MyWeatherApp
-![alt text](https://github.com/manikandan-bangaru/MyWeatherApp/blob/main/weatherApp.gif "Logo Title Text 1")
+![alt text](https://github.com/manikandan-bangaru/MyWeatherApp/blob/main/weatherAppDemo.gif "Logo Title Text 1")
 
 
 step 1:- Generate API Key from open https://openweathermap.org
