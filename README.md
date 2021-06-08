@@ -1,4 +1,7 @@
 # MyWeatherApp
+![alt text](https://github.com/manikandan-bangaru/MyWeatherApp/blob/main/weatherApp.gif "Logo Title Text 1")
+
+
 step 1:- Generate API Key from open https://openweathermap.org
 
 step 2:- create new file apiConfig.xcconfig and add your api key in it.
