@@ -21,8 +21,38 @@ class MyWeatherAppTests: XCTestCase {
     func testExample() throws {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
+        let i = 0
+        XCTAssert(i==0 , "I should be 0")
     }
 
+    func testAddAndRemoveCity() throws{
+        if CityInfoUtil.shared.getFavCities() == nil {
+            let response = WeatherResponse()
+            response.id = 1234
+            let firstCity = WeatherViewModal(response:response )
+            CityInfoUtil.shared.addCityWeather(city: firstCity)
+            
+            let isadded = CityInfoUtil.shared.getFavCities()!.contains { modal in
+                if modal.getCityID() == firstCity.getCityID(){
+                    return true
+                }
+                return false
+            }
+            XCTAssert(isadded == true , "Item is not added")
+
+            CityInfoUtil.shared.RemoveCityWeatherInfo(city: firstCity)
+            
+            let isAvailable = CityInfoUtil.shared.getFavCities()!.contains { modal in
+                if modal.getCityID() == firstCity.getCityID(){
+                    return true
+                }
+                return false
+            }
+            
+            XCTAssert(isAvailable == false , "Item is not removed")
+            
+        }
+    }
     func testPerformanceExample() throws {
         // This is an example of a performance test case.
         self.measure {
